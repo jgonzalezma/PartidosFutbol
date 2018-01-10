@@ -1,5 +1,10 @@
 package futbol;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Partido_Futbol {
 	private String local;
 	private String visitante;
@@ -36,4 +41,32 @@ public class Partido_Futbol {
 		System.out.println("El equipo local es " + getVisitante());
 		System.out.println("El equipo local es " + getGolesVisitante());
 	}
-}
+	public static ArrayList <Partido_Futbol> crearLista(String nombreFichero){
+		ArrayList <Partido_Futbol> Partidos = new ArrayList <Partido_Futbol>();
+		File f = new File(nombreFichero);
+		try {
+			Scanner fich = new Scanner(f);
+			while (fich.hasNextLine()) {
+				String linea = fich.nextLine();
+				String partes[] = linea.split(":");
+				Partido_Futbol Partido = new Partido_Futbol();
+				Partido.setLocal(partes[0]);
+				Partido.setVisitante(partes[1]);
+				Partido.setGolesLocal(Integer.parseInt(partes[2]));
+				Partido.setGolesVisitante(Integer.parseInt(partes[3]));
+			}
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return Partidos;
+	
+	}
+	
+	//public void crearPartido(String local, String visitante, int golesLocal, int golesVisitante){
+		//this.local = local;
+		//this.visitante = visitante;
+		//this.golesLocal = golesLocal;
+		//this.golesVisitante = golesVisitante;
+	}
+
