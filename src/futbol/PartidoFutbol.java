@@ -4,8 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Iterator;
 
-public class Partido_Futbol {
+public class PartidoFutbol {
 	private String local;
 	private String visitante;
 	private int golesLocal;
@@ -41,19 +42,19 @@ public class Partido_Futbol {
 		System.out.println("El equipo local es " + getVisitante());
 		System.out.println("El equipo local es " + getGolesVisitante());
 	}
-	public static ArrayList <Partido_Futbol> crearLista(String nombreFichero){
-		ArrayList <Partido_Futbol> Partidos = new ArrayList <Partido_Futbol>();
+	public static ArrayList <PartidoFutbol> crearLista(String nombreFichero){
+		ArrayList <PartidoFutbol> Partidos = new ArrayList <PartidoFutbol>();
 		File f = new File(nombreFichero);
 		try {
 			Scanner fich = new Scanner(f);
 			while (fich.hasNextLine()) {
 				String linea = fich.nextLine();
 				String partes[] = linea.split(":");
-				Partido_Futbol Partido = new Partido_Futbol();
-				Partido.setLocal(partes[0]);
-				Partido.setVisitante(partes[1]);
-				Partido.setGolesLocal(Integer.parseInt(partes[2]));
-				Partido.setGolesVisitante(Integer.parseInt(partes[3]));
+				PartidoFutbol partido = new PartidoFutbol();
+				partido.setLocal(partes[0]);
+				partido.setVisitante(partes[1]);
+				partido.setGolesLocal(Integer.parseInt(partes[2]));
+				partido.setGolesVisitante(Integer.parseInt(partes[3]));
 			}
 			
 		} catch (FileNotFoundException e) {
@@ -62,11 +63,17 @@ public class Partido_Futbol {
 		return Partidos;
 	
 	}
-	
-	//public void crearPartido(String local, String visitante, int golesLocal, int golesVisitante){
-		//this.local = local;
-		//this.visitante = visitante;
-		//this.golesLocal = golesLocal;
-		//this.golesVisitante = golesVisitante;
+	public static void listarPartidos(String Partidos){
+	if (Partidos.isEmpty()) {
+		System.out.println("La lista está vacía");
+	} else {
+		Iterator<PartidoFutbol> i = partido.iterator();
+		while (i.hasNext()) {
+			PartidoFutbol p = i.next();
+			
+		}
+		
 	}
 
+}
+}

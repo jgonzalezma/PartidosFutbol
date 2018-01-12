@@ -1,11 +1,13 @@
 package futbol;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainPartido {
 
 	public static void main(String[] args) {
+		ArrayList <Partido_Futbol> lista = new ArrayList <Partido_Futbol>();
 		Partido_Futbol.crearLista("D:/Josu/Programación/partidosfutbol.txt");
 		final int INSERTAR = 1;
 		final int LISTAR = 2;
@@ -41,7 +43,8 @@ public class MainPartido {
 				break;
 				
 			case ELIMINAR:
-				
+				System.out.println("Introduce un equipo para eliminar el partido");
+				String eliminarPartido = scan.nextLine();
 				break;
 				
 			case SALIR:
@@ -51,5 +54,23 @@ public class MainPartido {
 			} while (opcion != SALIR);
 
 	}
+	public void guardarLista(){
+	FileWriter fileWriter = null;
 
+	try {
+		fileWriter = new FileWriter(ArrayList<Partido_Futbol> Partidos, String nombreFichero);
+
+		PrintWriter printWriter = new PrintWriter(fileWriter);
+
+		Iterator<Partido_Futbol> it = Partidos.iterator();
+		while (it.hasNext()) {
+			Persona persona = it.next();
+			printWriter.println(persona.getStringGuardado());
+
+		}
+		fileWriter.close();
+	} catch (IOException e) {
+		
+		e.printStackTrace();
+	}}
 }
